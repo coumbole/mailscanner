@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+pip-selfcheck.json
+include/
+lib/
+bin/
+
 # Distribution / packaging
 .Python
 env/
@@ -80,7 +85,8 @@ celerybeat-schedule
 *.sage.py
 
 # dotenv
-.env
+.env/
+
 
 # virtualenv
 .venv
