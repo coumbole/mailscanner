@@ -124,8 +124,57 @@ class Parser:
         """
         res = string
         for r in args:
-            res = re.sub(r, "", res.strip(), flags=re.IGNORECASE)
+            res = re.sub(r, "", res.strip(),
+                    flags=re.IGNORECASE|re.MULTILINE)
         return res.strip()
+
+    def strip_between(self, string, start, end):
+        """Deletes everything between regexes start and end from string"""
+        deleting = False
+        over = False
+        res = ""
+        deleted = ""
+        for line in string.split("\n"):
+            if deleting:
+                deleted += line
+
+            if self.scan_line(line, start) and not over:
+                deleting = True
+
+            if self.scan_line(line, end):
+                over = True
+
+            if not deleting and not over:
+                res += line
+
+        return deleted
+
+
+
+
+    def distance_between(self, string, start, end):
+        """Returns number of lines between start and end"""
+        count = 0
+        started = False
+
+        for line in string.split("\n"):
+
+            if self.scan_line(line, start) and not started:
+                print(line)
+                started = True
+
+            if self.scan_line(line, end):
+                print(line)
+                return count
+
+            if started:
+                count += 1
+
+        return count
+
+    def scan_line(self, line, regex):
+        """Checks if regex is in line, returns bool"""
+        return bool(re.search(regex, line, flags=re.IGNORECASE))
 
     def scan_message(self, message, regex):
         """Scans regex from msg and returns the line that matches
