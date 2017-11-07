@@ -23,7 +23,6 @@ def date_is_valid(dates):
     Returns:
     True if the date is valid, False otherwise.
     """
-
     if (int(dates[0]) < 1 or
         int(dates[0]) > 31 or
         int(dates[1]) < 1 or
