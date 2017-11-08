@@ -1,17 +1,21 @@
-# Mailscanner
+## Mailscanner
 
 Mailscanner is a Python 3+ library to assist in composing an email
 newsletter from multiple relatively standard email messages.
 
 
-## Usage
+### Install
+
+Easiest done via pip `pip install pymailscanner`
+
+### Usage
 
 To use this module, you need to rename the `.env-example` directory to
 `.env` and fill out your credentials. The ImapReader object then uses
 these to log in to your email account using the standard imaplib
 library.
 
-## Examples
+### Examples
 
 A minimal working example to authenticate and fetch some messages would
 be like this:
