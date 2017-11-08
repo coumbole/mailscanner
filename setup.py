@@ -13,8 +13,7 @@ setup(
     python_requires='>=3',
     classifiers = [
         'Development Status :: 3 - Alpha',
-        'Programming Language :: Python :: 3',
-        'Inteded Audience :: Developers',
-        'License :: GNU General Public License v.3.0 (GPL-3.0)'
+        'Programming Language :: Python :: 3 :: Only',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
     ]
 )

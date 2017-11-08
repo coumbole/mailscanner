@@ -10,6 +10,7 @@ pip-selfcheck.json
 include/
 lib/
 bin/
+man/
 
 # Distribution / packaging
 .Python
