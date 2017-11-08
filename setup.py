@@ -10,7 +10,7 @@ setup(
     url='http://github.com/coumbole/mailscanner',
     keywords = ['email', 'imap', 'parser'],
     classifiers = [
-        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Inteded Audience :: Developers',
         'License :: GNU General Public License v.3.0 (GPL-3.0)'
     ]
