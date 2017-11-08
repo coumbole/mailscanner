@@ -130,27 +130,10 @@ class Parser:
 
     def strip_between(self, string, start, end):
         """Deletes everything between regexes start and end from string"""
-        deleting = False
-        over = False
-        res = ""
-        deleted = ""
-        for line in string.split("\n"):
-            if deleting:
-                deleted += line
-
-            if self.scan_line(line, start) and not over:
-                deleting = True
-
-            if self.scan_line(line, end):
-                over = True
-
-            if not deleting and not over:
-                res += line
-
-        return deleted
-
-
-
+        regex = start + '.*?' + end + '\s*'
+        res = re.sub(regex, '', string,
+                flags=re.DOTALL|re.IGNORECASE|re.MULTILINE)
+        return res
 
     def distance_between(self, string, start, end):
         """Returns number of lines between start and end"""
@@ -160,11 +143,9 @@ class Parser:
         for line in string.split("\n"):
 
             if self.scan_line(line, start) and not started:
-                print(line)
                 started = True
 
             if self.scan_line(line, end):
-                print(line)
                 return count
 
             if started:
@@ -214,7 +195,7 @@ class Parser:
         dl_string -- a string to be formatted
 
         Returns:
-        Date string in format dd.MM. or "Coudln't parse date"
+        Date string in format dd.MM. or "None.None"
         """
         thedate = get_simple_date(dl_string)
         if thedate != "Failed" and thedate:
@@ -223,8 +204,4 @@ class Parser:
         day = get_day_of_month(dl_string)
         month = get_month(dl_string)
 
-        if day is not None and month is not None:
-            return day + '.' + month + '.'
-
-
-        return "Couldn't parse date"
+        return day + '.' + month + '.'
