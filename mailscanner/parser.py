@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys
-import os
 import re
 from time import strptime
 
@@ -24,9 +22,9 @@ def date_is_valid(dates):
     True if the date is valid, False otherwise.
     """
     if (int(dates[0]) < 1 or
-        int(dates[0]) > 31 or
-        int(dates[1]) < 1 or
-        int(dates[1]) > 12):
+            int(dates[0]) > 31 or
+            int(dates[1]) < 1 or
+            int(dates[1]) > 12):
 
         return False
     return True
@@ -54,8 +52,7 @@ def get_simple_date(datestring):
 
         if date_is_valid(dates):
             return '.'.join(dates) + '.'
-        else:
-            return "Failed"
+        return "Failed"
 
 
 def get_month(datestring):
@@ -125,14 +122,14 @@ class Parser:
         res = string
         for r in args:
             res = re.sub(r, "", res.strip(),
-                    flags=re.IGNORECASE|re.MULTILINE)
+                         flags=re.IGNORECASE|re.MULTILINE)
         return res.strip()
 
     def strip_between(self, string, start, end):
         """Deletes everything between regexes start and end from string"""
-        regex = start + '.*?' + end + '\s*'
+        regex = start + r'.*?' + end + r'\s*'
         res = re.sub(regex, '', string,
-                flags=re.DOTALL|re.IGNORECASE|re.MULTILINE)
+                     flags=re.DOTALL|re.IGNORECASE|re.MULTILINE)
         return res
 
     def distance_between(self, string, start, end):
@@ -172,9 +169,9 @@ class Parser:
         """
         for line in message.split("\n"):
             if bool(re.search(
-                        regex,
-                        line,
-                        flags=re.IGNORECASE|re.MULTILINE)):
+                    regex,
+                    line,
+                    flags=re.IGNORECASE|re.MULTILINE)):
                 return line
         return ""
 

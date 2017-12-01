@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='mailscanner',
     packages=['mailscanner'],
-    version='1.0.0',
+    version='1.0.1',
     description='Reads and parses email messages using IMAP',
     author='Ville Kumpulainen',
     author_email='ville.kumpulainen@gmail.com',
